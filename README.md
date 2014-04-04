@@ -10,7 +10,7 @@ SymProject Blog is a blog template
 - About section
 
 ### Main
-- All blog posts are previews with an option to click to view the full post
+- All blog posts setup as previews with an option to click to view full post
 - Comment counts
 - Pagination
 
@@ -22,6 +22,8 @@ SymProject Blog is a blog template
 - External links 
 
 ### Bundles
+- Doctrine Fixtures
+- Doctrine Migrations
 - Sonata Admin Bundle for user creation and blog post CRUD
 
 ------------------------------------------------------------------
