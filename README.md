@@ -10,7 +10,7 @@ SymProject Blog is a blog template
 - About section
 
 ### Main
-- All blog posts are previews with an option to click on the full blog post
+- All blog posts are previews with an option to click to view the full post
 - Comment counts
 - Pagination
 
