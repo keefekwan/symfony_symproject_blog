@@ -1,0 +1,50 @@
+login:
+    path:  /login
+    defaults: { _controller: GeneralSymProjectBundle:Default:login }
+
+login_check:
+    path:  /login_check
+
+logout:
+    path:  /logout
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix:  /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix:  /admin
+
+general_sym_project_homepage:
+    path:  /
+    defaults: { _controller: GeneralSymProjectBundle:Page:index }
+
+general_sym_project_about:
+    path:  /about
+    defaults: { _controller: GeneralSymProjectBundle:Page:about }
+    requirements:
+        _methods:  GET
+
+general_sym_project_show:
+    path:  /{id}/{slug}
+    defaults: { _controller: GeneralSymProjectBundle:Blog:show }
+    requirements:
+        _methods:  GET
+        id: \d+
+
+general_sym_project_comment_create:
+    path:  /comment/{blog_id}
+    defaults: { _controller: GeneralSymProjectBundle:Comment:create }
+    requirements:
+        _methods:  POST
+        blog_id:  \d+
+
+general_sym_project_archive:
+     path:  /archive/{year}/{month}
+     defaults: { _controller: GeneralSymProjectBundle:Blog:archive }
+
+general_sym_project_search:
+    path: /search
+    defaults: { _controller: GeneralSymProjectBundle:Page:search }

@@ -1,0 +1,34 @@
+{# src/General/SymProjectBundle/Resources/views/show.html.twig #}
+{% extends 'GeneralSymProjectBundle::layout.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                <div class="blog-post">
+
+                    <h2 class="blog-post-title">{{ blog.title }}</h2>
+                        <p class="blog-post-meta"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time> by <a href="#">{{ blog.author }}</a></p>
+
+                    <div class="comment">
+                        <p><small>Comments: {{ comments|length }}</small></p>
+                    </div>
+                        <p>{{ blog.blog }}</p>
+                </div><!-- /.blog-post -->
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <section class="comments" id="comments">
+        <section class="previous-comments">
+            <h3>Comments</h3>
+            {% include 'GeneralSymProjectBundle:Comment:index.html.twig' with { 'comments': comments } %}
+        </section>
+
+        <h3>Add Comment</h3>
+        {% render(controller( 'GeneralSymProjectBundle:Comment:new', { 'blog_id': blog.id } )) %}
+    </section>
+
+{% endblock %}
+
+{% block page %}{% endblock %}

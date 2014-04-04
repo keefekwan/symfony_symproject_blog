@@ -1,0 +1,31 @@
+{# src/General/SymProjectBundle/Resources/views/Default/index.html.twig #}
+{% extends 'GeneralSymProjectBundle::layout.html.twig' %}
+
+{% block sidebar %}
+{{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {% for blog in blogs %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 blog-main">
+                    <div class="blog-post">
+
+                        <h2 class="blog-post-title">{{ blog.title }}</h2>
+                        <p class="blog-post-meta"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time> by <a href="#">{{ blog.author }}</a></p>
+                        <br>
+                        <p>{{ blog.blog|truncate(350, true) }}</p><br>
+
+                        <div class="tags">
+                            <p><strong>Tags: </strong><span class="highlight">{{ blog.tags }}</span></p>
+                        </div>
+                        <p class="continue"><a href="{{ path('general_sym_project_show', { 'id': blog.id, 'slug': blog.slug }) }}">More reading&raquo </a></p>
+                        <hr>
+
+                    </div><!-- /.blog-post -->
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

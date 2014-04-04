@@ -1,0 +1,64 @@
+{# src/General/SymProjectBundle/Resources/views/Default/index.html.twig #}
+{% extends 'GeneralSymProjectBundle::layout.html.twig' %}
+
+{% block search %}
+    <form action="{{ path('general_sym_project_search') }}" method="GET">
+        <label><input type="search" name="q" value={{ app.request.query.get('q') }}></label>
+        <input type="submit" value="Search">
+    </form>
+    <br>
+{% endblock %}
+
+
+{% block body %}
+    {% for blog in pagination_data.blogPage %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 blog-main">
+                    <div class="blog-post">
+
+                        <h2 class="blog-post-title">{{ blog.title }}</h2>
+                            <p class="blog-post-meta"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time> by <a href="#">{{ blog.author }}</a></p>
+
+                        <div class="comment">
+                            <p><small>Comments: {{ pagination_data.comments[loop.index0]|length }}</small></p>
+                        </div>
+                            <p>{{ blog.blog|truncate(350, true) }}</p><br>
+
+                        <div class="tags">
+                            <p><strong><small>Tags: </small></strong><span class="highlight">{{ blog.tags }}</span></p>
+                        </div>
+                            <p class="continue"><a href="{{ path('general_sym_project_show', { 'id': blog.id, 'slug': blog.slug }) }}">More reading&raquo </a></p>
+                        <hr>
+
+                    </div><!-- /.blog-post -->
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block pagination %}
+    <ul class="pager">
+        {% if pagination_data.total_pages > 0 %}
+            <div class="pagination">
+                <ul>
+                    {% for i in 1..pagination_data.total_pages %}
+                        {% if loop.first %}
+                            <li class="{% if pagination_data.current_page == 1 %} {% endif %}"><a href="{{ path('general_sym_project_homepage', { 'page':pagination_data.current_page - 1 }) }}">Previous</a></li>
+                        {%endif%}
+
+                        {% if loop.last %}
+                            <li class="{% if pagination_data.current_page == pagination_data.total_pages %} {% endif %}"><a href="{{ path('general_sym_project_homepage', { 'page':pagination_data.current_page + 1 }) }}">Next</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </ul>
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+
+{% endblock %}

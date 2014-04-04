@@ -1,0 +1,12 @@
+parameters:
+#    general_sym_project.example.class: General\SymProjectBundle\Example
+
+services:
+    general.symproject.admin.category:
+        class: General\SymProjectBundle\Admin\BlogAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: SymProject, label: Blogs }
+        arguments:
+            - ~
+            - General\SymProjectBundle\Entity\Blog
+            - 'GeneralSymProjectBundle:BlogAdmin'

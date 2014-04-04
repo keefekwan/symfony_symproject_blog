@@ -1,0 +1,4 @@
+general_sym_project:
+    resource: "@GeneralSymProjectBundle/Resources/config/routing.yml"
+    prefix:   /
+

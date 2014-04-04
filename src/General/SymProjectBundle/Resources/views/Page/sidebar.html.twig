@@ -1,0 +1,11 @@
+{# src/General/SymProjectBundle/Resources/views/Page/sidebar.html.twig #}
+
+<section class="section">
+    <p class="tags">
+        {% for tag, weight in tags %}
+        <span class="weight-{{ weight }}">{{ tag }}</span>
+        {% else %}
+    <p>There are no tags</p>
+    {% endfor %}
+    </p>
+</section>

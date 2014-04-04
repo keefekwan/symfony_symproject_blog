@@ -1,0 +1,38 @@
+{% extends 'GeneralSymProjectBundle::layout.html.twig' %}
+
+{#{% block search %}#}
+    {#<form action="{{ path('general_sym_project_search') }}" method="GET">#}
+        {#<label><input type="search" name="q" value={{ query }}></label>#}
+        {#<input type="submit" value="Search">#}
+    {#</form>#}
+    {#<br>#}
+{#{% endblock %}#}
+
+{% block search %}
+    <form action="{{ path('general_sym_project_search') }}" method="GET">
+        <label><input type="search" name="q" value={{ app.request.query.get('q') }}></label>
+        <input type="submit" value="Search">
+    </form>
+    <br>
+{% endblock %}
+
+{% block body %}
+    {% for result in results %}
+        <div class="container">
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                <div class="blog-post">
+                    <h2 class="blog-post-title">{{ result.title }}</h2>
+                    <p class="blog-post-meta"><time datetime="{{ result.created|date('c') }}">{{ result.created|date('l, F j, Y') }}</time> by <a href="#">{{ result.author }}</a></p>
+                    <p>{{ result.blog|truncate(350, true) }}</p><br>
+                    <div class="tags">
+                        <p><strong>Tags: </strong><span class="highlight">{{ result.tags }}</span></p>
+                    </div>
+                </div><!-- /.blog-post -->
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
+
+{% block footer %}{% endblock %}

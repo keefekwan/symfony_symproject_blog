@@ -1,0 +1,9 @@
+{# src/General/SymProjectBundle/Resources/views/comment.html.twig #}
+{% extends 'GeneralSymProjectBundle::layout.html.twig' %}
+
+{% block title %}Add Comment{% endblock %}
+
+{% block body %}
+    <h1>Add comment "{{ comment.blog.title }}"</h1>
+    {% include 'GeneralSymProjectBundle:Comment:form.html.twig' with {'form': form } %}
+{% endblock %}

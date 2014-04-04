@@ -1,0 +1,23 @@
+{# src/General/SymProjectBundle/Resources/views/layout.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% block nav %}
+    <div class="blog-masthead">
+        <div class="container">
+            <nav class="blog-nav">
+                <a class="blog-nav-item" href="{{ path('general_sym_project_homepage') }}">Home</a>
+                {#<a class="blog-nav-item" href="#">New features</a>#}
+                <a class="blog-nav-item" href="http://www.stackoverflow.com">Stack Overflow</a>
+                <a class="blog-nav-item" href="http://www.symfony.com">Resources</a>
+                <a class="blog-nav-item" href="{{ path('general_sym_project_about') }}">About</a>
+                {#<ul class="nav navbar-nav">#}
+                {#<li><a class="blog-nav-item" href="{{ path('general_sym_project_homepage') }}">Home</a></li>#}
+                {#<li><a class="blog-nav-item" href="#">New features</a></li>#}
+                {#<li><a class="blog-nav-item" href="http://www.stackoverflow.com">Stack Overflow</a></li>#}
+                {#<li><a class="blog-nav-item" href="http://www.symfony.com">Resources</a></li>#}
+                {#<li><a class="blog-nav-item" href="{{ path('general_sym_project_about') }}">About</a></li>#}
+                {#</ul>#}
+            </nav>
+        </div>
+    </div>
+{% endblock %}
