@@ -12,11 +12,11 @@ class PageController extends Controller
 {
     public function indexAction()
     {
-        // Search code calling from service search
+        // Search code using from Services/Search.php
         $query = $this->get('search');
         $results = $query->search();
 
-        // Pagination code
+        // Pagination code using Services/Pagination.php
         $pagination = $this->container->get("pagination");
         $pagination = $pagination->Pagination();
 
