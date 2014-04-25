@@ -1,3 +1,34 @@
+SymProject Blog is a blog template 
+---------------
+### created with Symfony2 and bootstrap 3.0 (http://getbootstrap.com/examples/blog/)
+
+### Features the following:
+
+### Top navbar
+- Home link
+- External links
+- About section
+
+### Main
+- All blog posts setup as previews with an option to click to view full post
+- Comment counts
+- Pagination
+
+### Side bar
+- Space for an About section
+- Search engine for blog searches
+- Blog archive for blog posts sorted by month and year
+- Tags
+- External links 
+
+### Bundles
+- Doctrine Fixtures
+- Doctrine Migrations
+- Sonata Admin Bundle for user creation and blog post CRUD
+
+------------------------------------------------------------------
+
+
 Symfony Standard Edition
 ========================
 
