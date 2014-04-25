@@ -1,13 +1,5 @@
 {% extends 'GeneralSymProjectBundle::layout.html.twig' %}
 
-{#{% block search %}#}
-    {#<form action="{{ path('general_sym_project_search') }}" method="GET">#}
-        {#<label><input type="search" name="q" value={{ query }}></label>#}
-        {#<input type="submit" value="Search">#}
-    {#</form>#}
-    {#<br>#}
-{#{% endblock %}#}
-
 {% block search %}
     <form action="{{ path('general_sym_project_search') }}" method="GET">
         <label><input type="search" name="q" value={{ app.request.query.get('q') }}></label>

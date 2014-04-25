@@ -3,7 +3,7 @@
 <section class="section">
     <p class="tags">
         {% for tag, weight in tags %}
-        <span class="weight-{{ weight }}">{{ tag }}</span>
+        <span class="weight-{{ weight }}"><a href="{{ path('general_sym_project_tag', {'tag': tag }) }}">{{ tag }}</a></span>
         {% else %}
     <p>There are no tags</p>
     {% endfor %}

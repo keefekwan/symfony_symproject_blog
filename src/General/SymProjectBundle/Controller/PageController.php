@@ -4,15 +4,12 @@
 namespace General\SymProjectBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
-use General\SymProjectBundle\Services\Search;
 
 class PageController extends Controller
 {
     public function indexAction()
     {
-        // Search code using from Services/Search.php
+        // Search function using code from Services/Search.php
         $query = $this->get('search');
         $results = $query->search();
 
@@ -20,11 +17,9 @@ class PageController extends Controller
         $pagination = $this->container->get("pagination");
         $pagination = $pagination->Pagination();
 
-//        exit(\Doctrine\Common\Util\Debug::dump($blogPage));
-
         return $this->render('GeneralSymProjectBundle:Default:index.html.twig', array(
-            'query'        => $query,
-            'results'      => $results,
+            'query'           => $query,
+            'results'         => $results,
             'pagination_data' => $pagination,
         ));
     }
@@ -64,7 +59,7 @@ class PageController extends Controller
         return $total;
     }
 
-    public function searchAction(Request $request)
+    public function searchAction()
     {
         // Search code: calling from the service Search
         $query = $this->get('search');
@@ -75,4 +70,21 @@ class PageController extends Controller
             'results'      => $results['results'],
         ));
     }
+
+    public function tagAction($tag = null)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $blogs = $em->getRepository('GeneralSymProjectBundle:Blog')
+            ->getPostsByTags($tag);
+
+        if (!$blogs) {
+            throw $this->createNotFoundException('Unable to find blog posts');
+        }
+
+        return $this->render('GeneralSymProjectBundle:Page:tag.html.twig', array(
+            'blogs' => $blogs,
+        ));
+    }
+
 }

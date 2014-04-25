@@ -48,3 +48,7 @@ general_sym_project_archive:
 general_sym_project_search:
     path: /search
     defaults: { _controller: GeneralSymProjectBundle:Page:search }
+
+general_sym_project_tag:
+    path: /tag/{tag}
+    defaults: { _controller: GeneralSymProjectBundle:Page:tag }

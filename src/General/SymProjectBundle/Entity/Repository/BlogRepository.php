@@ -3,7 +3,6 @@
 namespace General\SymProjectBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * BlogRepository
@@ -36,8 +35,7 @@ class BlogRepository extends EntityRepository
         $qb = $this->createQueryBuilder('b')
             ->where('b.created BETWEEN :start AND :end')
             ->setParameter('start', $date)
-            ->setParameter('end', $toDate)
-        ;
+            ->setParameter('end', $toDate);
 
         return $qb->getQuery()->getResult();
     }
@@ -86,6 +84,13 @@ class BlogRepository extends EntityRepository
         return $tagWeights;
     }
 
+    public function getPostsByTags($tag)
+    {
+        $query = $this->createQueryBuilder('b')
+            ->where('b.tags like :tag')
+            ->setParameter('tag', '%'.$tag.'%');
 
+        return $query->getQuery()->getResult();
+    }
 
 }
