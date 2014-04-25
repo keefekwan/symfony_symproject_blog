@@ -1,0 +1,44 @@
+{# src/General/SymProjectBundle/Resources/views/Default/tag.html.twig #}
+{% extends 'GeneralSymProjectBundle::layout.html.twig' %}
+
+{% block search %}
+    <form action="{{ path('general_sym_project_search') }}" method="GET">
+        <label><input type="search" name="q" value={{ app.request.query.get('q') }}></label>
+        <input type="submit" value="Search">
+    </form>
+    <br>
+{% endblock %}
+
+
+{% block body %}
+    {% for blog in blogs %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 blog-main">
+                    <div class="blog-post">
+
+                        <h2 class="blog-post-title">{{ blog.title }}</h2>
+                        <p class="blog-post-meta"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time> by <a href="#">{{ blog.author }}</a></p>
+
+                        <div class="comment">
+                            <p><small>Comments: {{ blog.comments|length }}</small></p>
+                        </div>
+                        <p>{{ blog.blog|truncate(350, true) }}</p><br>
+
+                        <div class="tags">
+                            <p><strong><small>Tags: </small></strong><span class="highlight">{{ blog.tags }}</span></p>
+                        </div>
+                        <p class="continue"><a href="{{ path('general_sym_project_show', { 'id': blog.id, 'slug': blog.slug }) }}">More reading&raquo </a></p>
+                        <hr>
+
+                    </div><!-- /.blog-post -->
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+
+{% endblock %}
